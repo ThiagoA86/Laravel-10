@@ -21,3 +21,4 @@ Route::get('/', function () {
 });
 Route::get('/contato',[ContatoController::class, 'Index']);
 Route::resource('/produtos', ProdutosController::class);
+Route::post('produtos/create', [ProdutosController::class, 'store']);
