@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+     <!--View do Index. Recebe App.Blade.PHP-->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,6 +10,18 @@
     </head>
     @section('content')
         <h1>Produtos</h1>
+        {{Form::open(['url'=>['produtos/buscar']])}}
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    {{Form::text('busca',$busca,['class'=>'form-control','required','placeholder'=>'Buscar'])}}
+                    <span class="input-group-btn">
+                        {{ Form::submit('Buscar', ['class'=>'btn btn-secondary'])}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        {{{Form::close()}}}
         @if(Session::has('mensagem'))
             <div class="alert alert-success">{{Session::get('mensagem')}}</div>
         @endif
@@ -32,5 +45,7 @@
             </div>
             @endforeach
         </div>
+        {{$produtos->links()}}
         @endsection
-</html>
+
+
