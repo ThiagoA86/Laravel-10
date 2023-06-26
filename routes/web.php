@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ProdutosController;
 use GuzzleHttp\Psr7\Uri;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,9 @@ Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit']);
 Route::resource('/produtos', ProdutosController::class);
 Route::post('produtos/create', [ProdutosController::class, 'store']);
 Route::post('produtos/buscar', [ProdutosController::class, 'buscar']);
+
+Route::auth();
+
+Route::get('/home', [HomeController::class, 'Index']);
+
+
