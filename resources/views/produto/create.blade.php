@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
+
      <!--View do Formalario de Criação de Novos Produtos. Recebe App.Blade.PHP-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @extends('layout.app')
+     @extends('layouts.app')
         @section('title','Adicionar um produto')
 
-    </head>
+
     @section('content')
         <h1>Criar um novo produto</h1>
         @if(count($errors)>0)
@@ -33,4 +29,4 @@
         {{Form::submit('Cadastrar!',['class'=>'btn btn-primary'])}}
         {{Form::close()}}
    @endsection
-</html>
+

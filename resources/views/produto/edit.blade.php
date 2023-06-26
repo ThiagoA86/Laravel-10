@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-     <!--View do Formalario de Alteração dos Produtos. Recebe App.Blade.PHP-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @extends('layout.app')
-        @section('title','Alterar o produto: '.$produto->titulo)
 
-    </head>
+     <!--View do Formalario de Alteração dos Produtos. Recebe App.Blade.PHP-->
+@extends('layouts.app')
+@section('title','Alterar o produto: '.$produto->titulo)
+
+
     @section('content')
         <h1>Alterar o produto: {{$produto->titulo}}</h1>
         @if(count($errors)>0)

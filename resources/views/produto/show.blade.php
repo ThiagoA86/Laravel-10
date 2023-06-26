@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
+
      <!--View para visualizar o Produto. Recebe App.Blade.PHP-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @extends('layout.app')
+
+        @extends('layouts.app')
         @section('title',$produto->titulo)
-    </head>
+
     @section('content')
         <h1>Produto {{$produto->titulo}}</h1>
         <div class="row">
@@ -29,4 +26,4 @@
   </div>
        <a href="javascript:history.go(-1)">Voltar</a>
     @endsection
-</html>
+

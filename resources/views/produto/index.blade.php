@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-     <!--View do Index. Recebe App.Blade.PHP-->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        @extends('layout.app')
-        @section('title','Listagem de produtos')
+@extends('layouts.app')
+ @section('title','Listagem de produtos')
 
-    </head>
+
     @section('content')
         <h1>Produtos</h1>
         {{Form::open(['url'=>['produtos/buscar']])}}
@@ -38,10 +32,12 @@
                     {{$produto->titulo}}
                   </a>
                 @endif
-                {{Form::open(['route'=>['produtos.destroy',$produto->id],'method'=>'DELETE'])}}
-                <a class='btn btn-warning' href=" {{url('produtos/'.$produto->id.'/edit')}} ">Editar</a>
-                {{Form::submit('Excluir',['class'=>'btn btn-danger'])}}
-                {{Form::close()}}
+                @if(Auth::check())
+                    {{Form::open(['route'=>['produtos.destroy',$produto->id],'method'=>'DELETE'])}}
+                    <a class='btn btn-warning' href=" {{url('produtos/'.$produto->id.'/edit')}} ">Editar</a>
+                    {{Form::submit('Excluir',['class'=>'btn btn-danger'])}}
+                    {{Form::close()}}
+                @endif
             </div>
             @endforeach
         </div>
