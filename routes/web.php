@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//Rota que passaram pelo ContatoController e acionaram os metodos CAP 2.
 Route::get('/contato',[ContatoController::class, 'Index']);
+//Rota que passaram pelo ProdutoController e acionaram os metodos CAP 3.
+Route::get('/adicionar-produtos', [ProdutosController::class, 'create']);
+Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit']);
 Route::resource('/produtos', ProdutosController::class);
 Route::post('produtos/create', [ProdutosController::class, 'store']);
+Route::post('produtos/buscar', [ProdutosController::class, 'buscar']);

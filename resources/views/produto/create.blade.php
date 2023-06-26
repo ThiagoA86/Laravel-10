@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+     <!--View do Formalario de Criação de Novos Produtos. Recebe App.Blade.PHP-->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

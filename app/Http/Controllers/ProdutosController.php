@@ -8,10 +8,11 @@ use App\Models\Produto;
 
 class ProdutosController extends Controller
 {
+    //Controller dos Produtos Metodos Desenvolvidos no Cap 3.
     public function index()
     {
-        $produtos = Produto::all();
-        return view('produto.index',array('produtos'=>$produtos));
+        $produtos = Produto::paginate(4);
+        return view('produto.index',array('produtos'=>$produtos,'busca'=>null));
     }
     public function show($id)
     {
@@ -70,5 +71,15 @@ class ProdutosController extends Controller
         //Envia mensagem para Session e faz refresh.
         Session::flash('mensagem','Produto excluído com sucesso;');
         return redirect()->back();
+    }
+    public function buscar(Request $request)
+    {
+        //Procura o Retorna o titulo e descrição parecida na classe no Model Produto
+        $produtos=Produto::where('titulo','LIKE',
+        '%'.$request->input('busca').'%')->
+        orwhere('descricao','LIKE','%'.$request->input('busca').'%')->paginate(4);
+        //Retorna a view com o resultado
+        return view('produto.index',array('produtos'=>$produtos,'busca'=>$request->input('busca')));
+
     }
 }

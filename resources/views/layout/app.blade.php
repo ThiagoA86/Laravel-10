@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <!--Cabeçalhos e Body com CSS e Jquery para as View do CAP3-->
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
