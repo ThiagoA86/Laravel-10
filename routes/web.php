@@ -22,6 +22,8 @@ Route::get('/', function () {
 });
 //Rota que passaram pelo ContatoController e acionaram os metodos CAP 2.
 Route::get('/contato',[ContatoController::class, 'Index']);
+//Rota que passaram pelo ContatoController Enviar e acionaram os metodos CAP 6.
+Route::post('/contato/enviar',[ContatoController::class, 'enviar']);
 //Rota que passaram pelo ProdutoController e acionaram os metodos CAP 3.
 Route::get('/adicionar-produtos', [ProdutosController::class, 'create']);
 Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit']);

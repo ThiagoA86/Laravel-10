@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    'default' => env('MAIL_MAILER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,13 +36,15 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'host' => env('MAIL_HOST', ''),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env(''),
+            'password' => env(''),
             'timeout' => null,
             'auth_mode' => null,
+            'domain' => env(''),
+            'secret' => env(''),
         ],
 
         'ses' => [
@@ -51,6 +53,15 @@ return [
 
         'mailgun' => [
             'transport' => 'mailgun',
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 587),
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+            'username' => env('postmaster@sandbox5238d1fef6bd427f9c922a80d5a38dba.mailgun.org'),
+            'password' => env('58923e29f20390ec4635668afb67bdfe-e5475b88-acc42731'),
+            'timeout' => null,
+            'auth_mode' => null,
+            'domain' => env('sandbox5238d1fef6bd427f9c922a80d5a38dba.mailgun.org'),
+            'secret' => env('key-645094abb2dfde1231e59ac48c660a00-e5475b88-9f920eaf'),
         ],
 
         'postmark' => [
@@ -92,8 +103,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'thiago.data_consult@hotmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Thiago Alves'),
     ],
 
     /*
