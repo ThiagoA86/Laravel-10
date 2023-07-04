@@ -26,13 +26,16 @@ Route::get('/contato',[ContatoController::class, 'Index']);
 Route::post('/contato/enviar',[ContatoController::class, 'enviar']);
 //Rota que passaram pelo ProdutoController e acionaram os metodos CAP 3.
 Route::get('/adicionar-produtos', [ProdutosController::class, 'create']);
+Route::post('/adicionar-produtos', [ProdutosController::class, 'store']);
 Route::get('/produtos/{id}/editar', [ProdutosController::class, 'edit']);
 Route::resource('/produtos', ProdutosController::class);
-Route::post('produtos/create', [ProdutosController::class, 'store']);
+//Route::post('produtos/create', [ProdutosController::class, 'store']);
 Route::post('produtos/buscar', [ProdutosController::class, 'buscar']);
 
 Route::auth();
 
 Route::get('/home', [HomeController::class, 'Index']);
 
+//Rota Extra
+Route::get('/extras', [ProdutosController::class, 'extras']);
 

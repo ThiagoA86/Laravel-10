@@ -112,4 +112,89 @@ class ProdutosController extends Controller
         return view('produto.index',array('produtos'=>$produtos,'busca'=>$request->input('busca')));
 
     }
+    public function extras(Request $request){
+        try
+        {
+            $produto=Produto::with('comComentarios')->find(13);
+            echo "<h2>$produto->titulo</h2>";
+            echo "<p>$produto->descricao<p>";
+            echo "<h3>Comentarios</h3>";
+            foreach($produto->comComentarios as $comentario)
+            {
+                echo "<h4>$comentario->usuario</h4>";
+                echo "<p>$comentario->comentario</p>";
+                echo "<p>Classificacao: $comentario->classificassao</p>";
+                echo "<p>".date('d/m/Y h:i:s',strtotime($comentario->update_at))."</p>";
+                echo "<hr>";
+            }
+        }
+        catch(\Exception $e){
+            dd($e);
+        }
+        /*
+        //First e FirstOrFail
+        try{
+            $produto = Produto::where(function($buscar)use ($request){
+                $buscar->where('titulo','like','%Nobreak%');
+                $buscar->where('descricao','like','%Nobreak%');
+            })->FirstOrFail();
+            echo "<h2>".$produto->titulo. " - R$ ".number_format($produto->preco,2,",",".")."</h2>";
+        }
+        catch(\Exception $e){
+            dd($e);
+        }
+        /*
+        //Inspeção do SQL gerada
+        try{
+            $produtos = Produto::where(function($buscar)use ($request){
+                $buscar->where('titulo','like','%Nobreak%');
+                $buscar->orwhere('descricao','like','%Nobreak%');
+            })->toSql();
+            echo($produtos);
+        }
+        catch(\Exception $e){
+            dd($e);
+        }
+
+        /*
+         //Filtro de Busca
+         $produtos=Produto::where('titulo','like','%Nobreak%')->orWhere('descricao','like','%Nobreak%')->get();
+         foreach($produtos as $produto)
+         {
+              echo "<h2>".$produto->titulo. " - R$ ".number_format($produto->preco,2,",",".")."</h2>";
+         }
+         /*
+
+        //Acessando atributos especificos
+        $produtos=Produto::orderBy('id','DESC')->get(array('titulo','preco'));
+       foreach($produtos as $produto)
+       {
+            echo "<h2>".$produto->titulo. " - R$ ".number_format($produto->preco,2,",",".")."</h2>";
+       }
+       /*
+       //Query de conta mais complexa
+       $contar = Produto::where('preco','>',1000)->count();
+       echo $contar . " produtos maior que R$1000,00";
+       //Funçoes do Eloquent
+       /*
+       $menor_preco=Produto::all()->min('preco');
+       $maior_preco=Produto::all()->max('preco');
+       $media_preco=Produto::all()->avg('preco');
+       $contar=Produto::all()->count();
+       $soma=Produto::all()->sum('preco');
+       echo "Prodito de menor preço R$".number_format($menor_preco,2,",",".")."</br>";
+       echo "Produto de mais caro preço R$".number_format($maior_preco,2,",",".")."</br>";
+       echo "Produto de medio preço R$".number_format($media_preco,2,",",".")."</br>";
+       echo "Para ".$contar. " produtos.</br>";
+       echo "Soma dos preços R$".number_format($soma,2,",",".")."</br>";
+       /*
+       //Produtos na Ordem do Eloquent Extra
+       /*$produtos=Produto::orderBy('id','DESC')->get();
+       foreach($produtos as $produto)
+       {
+            echo "<h2>".$produto->id. " - ".$produto->titulo."</h2>";
+       }
+       */
+
+    }
 }

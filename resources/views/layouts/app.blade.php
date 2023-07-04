@@ -23,9 +23,8 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-            <div class="navbar-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#app-navbar-collapse" aria-controls="app-navbar-collapse" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                     <span class="icon-bar"></span>
@@ -35,7 +34,7 @@
 
                 <a class="navbar-brand" href="{{ url('/produtos') }}">
                     Produtos da Loja
-                 </a>
+                     </a>
 
                  <!-- Inicio do Colpse do botão -->
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -49,7 +48,7 @@
                     <ul class="navbar-nav ml-auto">
                         @if(Auth::check())
                         <li class="nav-item">
-                            <a  class="nav-link" href="{{url('/adicionar-produto') }}">
+                            <a  class="nav-link" href="{{url('/adicionar-produtos') }}">
                             <span class="bi bi-plus-circle-fill" aria-hidden="false"></span> Novo produto
 
                             </a>
@@ -89,8 +88,8 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-            </div>
+
+
         </nav>
 
         <main class="py-4">

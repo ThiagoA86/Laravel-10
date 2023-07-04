@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    use HasFactory;
+    public function comComentarios()
+    {
+        return $this->hasMany('App\Models\Comentario','produto_id','id');
+    }
 }
