@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'mailgun'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,15 +36,13 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => env('MAIL_HOST', ''),
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env(''),
-            'password' => env(''),
+            'username' => env('****'),
+            'password' => env('*****'),
             'timeout' => null,
             'auth_mode' => null,
-            'domain' => env(''),
-            'secret' => env(''),
         ],
 
         'ses' => [
@@ -61,7 +59,7 @@ return [
             'timeout' => null,
             'auth_mode' => null,
             'domain' => env('sandbox5238d1fef6bd427f9c922a80d5a38dba.mailgun.org'),
-            'secret' => env('key-645094abb2dfde1231e59ac48c660a00-e5475b88-9f920eaf'),
+            'secret' => env('645094abb2dfde1231e59ac48c660a00-e5475b88-9f920eaf'),
         ],
 
         'postmark' => [
@@ -103,8 +101,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'thiago.data_consult@hotmail.com'),
-        'name' => env('MAIL_FROM_NAME', 'Thiago Alves'),
+        'address' => env('MAIL_FROM_ADDRESS', ''),
+        'name' => env('MAIL_FROM_NAME', ''),
     ],
 
     /*

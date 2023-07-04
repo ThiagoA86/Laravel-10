@@ -19,7 +19,7 @@ class ContatoController extends Controller
     );
 
     Mail::send('mensagem', $data, function ($message) {
-        $message->from('thiago.data_consult@hotmail.com', 'Thiago');
+        $message->from('tapgordo@gmail.com', 'Thiago');
         $message->subject("Mensagem encaminhada por meio do formulário de contato.");
         $message->to('thiago.data_consult@hotmail.com')->cc('thiago.data_consult@hotmail.com');
       });
