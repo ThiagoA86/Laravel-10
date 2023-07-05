@@ -46,10 +46,17 @@ class ProdutosController extends Controller
         if(Auth::check()){
             $this->validate( $request, ['referencia' => 'required|unique:produtos|min:3','titulo' => 'required|min:3']);
             $produto = new Produto();
+
             $produto->referencia = $request->input('referencia');
             $produto->titulo = $request->input('titulo');
             $produto->descricao = $request->input('descricao');
             $produto->preco = $request->input('preco');
+            if($request->hasFile('fotoproduto'))
+            {
+                $imagem = $request->file('fotoproduto');
+                $nomearquivo = md5($produto->id).".".$imagem->getClientOriginalExtension();
+                $request->file('fotoproduto')->move(public_path('./img/produtos/'),$nomearquivo);
+            }
             // //Usa o metodo do verbo Insert do SQL
             if($produto->save()){
                 return redirect('produtos');
@@ -113,6 +120,16 @@ class ProdutosController extends Controller
 
     }
     public function extras(Request $request){
+
+        $produtos=Produto::onlyTrashed()->get();
+        foreach($produtos as $produto)
+        {
+            echo "<pre>";
+            print_r($produto);
+
+        }
+        /*
+        //Para exbir os comentarios do registro ID:13
         try
         {
             $produto=Produto::with('comComentarios')->find(13);
