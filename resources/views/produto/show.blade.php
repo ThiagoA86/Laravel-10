@@ -13,6 +13,7 @@
                     <li>Referência: {{$produto->referencia}}</li>
                     <li>Preço: R${{number_format($produto->preco,2,',','.')}}</li>
                     <li>Adicionado em: {{date("d/m/Y",strtotime($produto->created_at))}}</li>
+                    <li>ID no BD: {{$produto->id}}</li>
             </ul>
             <p>{{$produto->descricao}}</p>
         </div>

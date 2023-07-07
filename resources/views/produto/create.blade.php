@@ -16,7 +16,7 @@
             </ul>
         </div>
         @endif
-        {{Form::open(['method'=>'post'])}}
+        {{Form::open(['enctype'=>'multipart/form-data','method'=>'post',])}}
         {{Form::label('referencia','Referência')}}
         {{Form::text('referencia','',['class'=>'form-control','required','placeholder'=>'Referência'])}}
         {{Form::label('titulo', 'Título')}}
